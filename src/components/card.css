@@ -1,0 +1,267 @@
+.setLogo{
+    position: relative;
+    margin-top: 20px;
+    width: 80%;
+    max-width: 300px;
+
+}
+
+.cardContainer{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    
+    transform: perspective(600px);
+    transform-style:preserve-3d;
+
+    animation:  cardAppear 1s ease-out;
+    padding: 0 10%;
+  
+}
+
+
+@keyframes cardAppear{
+    0%{
+        filter: blur(4px);
+        transform: translateY(150vh);
+    }
+    40%{
+        filter: blur(4px);
+        transform: translateY(150vh);
+    }
+    80%{
+        filter: blur(0);
+        transform: translateY(-5vh);
+        animation-timing-function: ease-in-out;
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/*cardBack
+=======================================================================*/
+
+.cardBack{
+    position: absolute;
+    height: 50%;
+    backface-visibility: hidden;
+    transform-origin: center;
+    scale: 100%;
+    transition: scale 0.5s ease-out;
+
+    animation: cardFloat 2s ease-in-out 1s infinite,
+               cardShake 3s ease-in-out 1s infinite;
+}
+
+.cardBack:hover{
+    cursor: pointer;
+    scale: 120%;
+    transition: scale 0.5s ease-out;
+    animation:  cardFloat 2s ease-in-out 1s infinite;
+
+}
+
+
+@keyframes cardFloat{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-5%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardShake{
+    0%{
+        transform: rotate3d(0,0,0,0);
+
+    }
+    10%{
+        transform: rotate3d(0,0,1,5deg);
+    }
+    20%{
+        transform: rotate3d(0,0,-1,5deg);
+    }
+    30%{
+        transform: rotate3d(0,0,1,5deg);
+    }
+    40%{
+        transform: rotate3d(0,0,-1,5deg);
+    }
+    50%{
+        transform: rotate3d(0,0,0,0);
+        animation-timing-function: ease-out;
+    }
+}
+
+/*cardFront
+=======================================================================*/
+
+.cardFront{
+    position: absolute;
+    height: 50%;
+    transform-origin: center;
+    backface-visibility: hidden;
+    scale: 120%;
+    transition: scale 0.5s ease-out;
+
+    transform: rotate3d(0,1,0,180deg);
+}
+
+.cardFront:hover{
+    scale: 140%;
+    transition: scale 0.5s ease-out;
+}
+
+.flipCard{
+    animation:  cardFlip 1s ease-out forwards,
+                cardFloat 2s ease-in-out infinite;
+
+    animation-composition: add;
+}
+
+@keyframes cardFlip{
+    0%{
+        transform: rotate3d(0,1,0,0);
+    }
+    100%{
+        transform: rotate3d(0,1,0,180deg);
+    }
+}
+
+/*cardShadow
+=======================================================================*/
+
+.cardShadow{
+    background-color: black;
+    position: relative;
+    top: -10%;
+    height: 30px;
+    width: 300px;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 20%;
+
+        animation:  cardDropShadow 2s ease-in-out 1.1s infinite;
+}
+
+@keyframes cardDropShadow{
+    0%{
+        scale: 130%;
+        opacity: 100%;
+    }
+    50%{
+        scale: 100%;
+        opacity: 70%;
+    }
+    100%{
+        scale: 130%;
+        opacity: 100%;
+    }
+}
+
+
+/*cardDetails
+=======================================================================*/
+
+.cardInfo{
+    position: relative;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 25% 40% 25%;   
+    column-gap: 5%;
+    justify-items: center;
+    align-items: center;
+
+    transform: translateY(150vh);
+    visibility: hidden;
+}
+
+.cardInfoflipCard{
+    position: relative;
+
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateY(150vh);
+
+    animation:  cardAppear 1s ease-out forwards;
+
+}
+
+.cardInfoflipCard > * {
+    background-color: white;
+    height: 50px;
+    width: 20%;
+    min-width: 150px;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    font-size: large;
+    margin: 5px 10px;
+
+    box-shadow: 0 3px 5px #0075BE;
+
+    transition: all 0.5s ease;
+}
+
+.cardInfoflipCard > *:hover {
+    background-color: #FFCC00;
+
+    box-shadow: 0 10px 10px #0075BE;
+    transform: translateY(-5px);
+
+}
+
+.cardInfoflipCard h2{
+    width: 50%;
+}
+
+.cardInfoflipCard h3 img{
+    padding-right: 10px;
+}
+
+
+
+
+@media screen and (max-width: 650px) { 
+    .cardInfoflipCard{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        transform: translateY(150vh);
+        animation:  cardAppear 1s ease-out forwards;
+    
+    }
+
+
+    .cardInfoflipCard h2{
+        width:80% ;
+       
+    }
+    
+    .cardInfoflipCard h3{
+        width: 80%;
+    }
+    
+ 
+}
