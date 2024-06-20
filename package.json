@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mx2010.github.io/pokemonPrizeCardTest/tree/first-branch/src",
+  "homepage": "https://mx2010.github.io/pokemonPrizeCardTest/first-branch",
   "name": "card-flip-test",
   "version": "0.1.0",
   "private": true,
@@ -41,6 +41,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^6.0.0"
   }
 }
